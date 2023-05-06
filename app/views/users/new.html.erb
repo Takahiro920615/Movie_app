@@ -1,0 +1,25 @@
+<header>
+  <div class="header-logo">
+    <a href="/">MOVIE TALK</a>
+  </div>
+  <ul class="header-menus">
+    <li><a href="/about">MOVIE TALKについて</a></li>
+  </ul>
+</header>
+
+<div class="main users-new">
+  <div class ="container">
+   <div class="form-heading">ユーザー登録</div>
+   <%= form_tag users_path do %>
+     <div class="form users-form">
+       <div class="form-body">
+         <p>ユーザー名</p>
+         <input name="name">
+         <p>メールアドレス</p>
+         <input name="email">
+         <input class="new-button" type="submit" value="新規登録">
+       </div>
+     </div>
+     <%end%>
+  </div>
+</div>
