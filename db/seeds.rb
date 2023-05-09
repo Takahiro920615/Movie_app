@@ -9,7 +9,9 @@ User.create!(name: "管理者",
              email: "sample@email.com",
              password: "password",
              password_confirmation: "password",
-             admin: true
+             admin: true,
+             picture: "no_image.png"
+
 )
 
 10.times do |n|
@@ -18,7 +20,8 @@ User.create!(name: "管理者",
   User.create!(name: name,
                email: email,
                password: "password",
-               password_confirmation: "password"
+               password_confirmation: "password",
+               picture: "no_image.png"
   )
 end
      

@@ -74,8 +74,8 @@ body {
 header {
   height: 64px;
   background-color:black;
-  position: absolute;
-  z-index: 1;
+  /* position: absolute; 親要素に対してい絶対位置が決まる
+  /* z-index: 1; absoluteに対してい重なり順を決める。数字が大きい方が上になる */
   width: 100%;
 }
 
@@ -238,6 +238,10 @@ header {
   clear: both;
 }
 
+.users-index-item{
+  text-align: center;
+}
+
 /* フラッシュ */
 
 .flash {
@@ -254,5 +258,15 @@ header {
 }
 
 .form-heading{
+  text-align: center;
+}
+
+.index_h1{
+  padding-top: 50px;
+  text-align: center;
+  color:rgba(187, 169, 46, 0.8)
+}
+
+.users-show-item{
   text-align: center;
 }

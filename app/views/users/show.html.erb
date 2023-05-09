@@ -7,11 +7,12 @@
   </ul>
 </header>
 
-<div class="main users-index">
+<div class="main user-show">
   <div class="container">
     <h1 class="user-headding"></h1>
-      <div class="users-index-item">
+      <div class="users-show-item">
         <div class="user-right">
+          <%= image_tag "/user_images/#{@user.picture}", width:200, height:200%><br>
           <%= @user.name %><br>
           <%= @user.email%>
         </div>
