@@ -22,12 +22,18 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def create
     @user = User.new(name: params[:name], email: params[:email], picture: "no_image.png")
-    @user.save
-    redirect_to user_url(@user)
+    if @user.save
+      flash[:success] = "ユーザー登録しました"
+      redirect_to user_url(@user)
+    else
+      flash[:danger] ="ユーザー登録に失敗しました"
+      render :new
+    end
   end
 
 end

@@ -11,6 +11,21 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-logo">
+        <a href="/">MOVIE TALK</a>
+      </div>
+      <ul class="header-menus">
+        <li><a href="/about">MOVIE TALKについて</a></li>
+      </ul>
+    </header>
+    <div id="main-message">
+      <div class="container">
+        <% flash.each do |message_type,msg|%>
+          <div class="alert alert-<%=message_type%>"><%= msg %></div>
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
