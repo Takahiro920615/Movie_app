@@ -2,26 +2,25 @@
 
 <div class="main users-new">
   <div class="container">
- 
-    <div class="form-heading">新規ユーザー登録</div>
-    
-    <%= form_tag users_path do %>
-      <div class="form users-form">
-        <div class="form-body">
-        <% if @user.errors.any?%>
-        <ul>
-        <% @user.errors.full_messages.each do |message|%>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-        <% end %>
-          <p>ユーザー名</p>
-          <input name="name">
-          <p>メールアドレス</p>
-          <input name="email">
-          <input type="submit" value="新規登録">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="form-heading">新規ユーザー登録</div>
+          <%= form_with(model: @user, local: true) do |f| %>
+            <%= f.label :name, class: "label-signup" %>
+            <%= f.text_field :name, class:"form-control" %><br>
+
+            <%= f.label :email, class: "label-signup" %>
+            <%= f.email_field :email, class:"form-control" %><br>
+
+            <%= f.label :password, class: "label-signup" %>
+            <%= f.password_field :password, class:"form-control" %><br>
+
+            <%= f.label :password_confirmation, "Confirmation" %>
+            <%= f.password_field :password_confirmation, class:"form-control" %><br>
+
+            <%= f.submit "新規作成", class: "btn btn-primary btn-block btn-signup"%>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
 </div>

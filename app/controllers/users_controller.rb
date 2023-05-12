@@ -26,14 +26,24 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:name], email: params[:email], picture: "no_image.png")
+    @user = User.new(user_params)
     if @user.save
+      if @user.picture.nil?
+        @user.picture = "public/user_images/no_image.png"
+      end
       flash[:success] = "ユーザー登録しました"
-      redirect_to user_url(@user)
+    
+      redirect_to @user
     else
-      flash[:danger] ="ユーザー登録に失敗しました"
+      flash.now[:danger]="ユーザー登録に失敗しました"
       render :new
     end
+  end
+
+  private
+  
+  def user_params
+  params.require(:user).permit(:name, :email, :password, :password_confirmation,:picture).merge(picture: "no_image.png")
   end
 
 end

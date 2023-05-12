@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6}
-
+ 
+  no_image_path = Rails.root.join("public", "user_images", "no_image.png")
 end
