@@ -17,10 +17,19 @@
         <%= link_to "MOVIE TALK", root_path, id:"logo"%>
           <nav>
             <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "MOVIE TALKについて", about_path%><li>
-            </ul>
+             <% if logged_in? %>
+               <li><%= link_to "MOVIE TALKについて", about_path%><li>
+               <li><%= link_to "Showページ",user_path(current_user)%></li>
+               <li><%= link_to"入場者一覧",users_path%></li>
+               <li><%= link_to"ユーザー情報編集",edit_user_path(current_user)%></li>
+               <li><%= link_to "Log out", logout_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
+             <% else%>
+               <li><%= link_to "MOVIE TALKについて", about_path%><li>
+               <li><%= link_to "入館",login_path%></li>
+               <li><%= link_to "新規登録",new_user_path%></li>
+             <% end%>
+           </ul>
           </nav>
-      </ul>
     </header>
 
   <body>

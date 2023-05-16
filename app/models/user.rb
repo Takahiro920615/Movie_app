@@ -7,7 +7,7 @@ class User < ApplicationRecord
   format: {with: VALID_EMAIL_REGEX }
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6}
+  validates :password, presence: true, length: { minimum: 6}, allow_nil: true
  
   no_image_path = Rails.root.join("public", "user_images", "no_image.png")
 end
