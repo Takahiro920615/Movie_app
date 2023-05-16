@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
+  get '/user_images/:filename', to: 'users#user_image', as: 'user_image'
 
   resources :users do
   end

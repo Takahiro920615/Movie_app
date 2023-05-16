@@ -29,9 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      if @user.picture.nil?
-         @user.picture = "public/user_images/no_image.png"
-      end
+      @user.picture.attach(params[:user][:picture])
          flash[:success] = "ユーザー登録しました"
          redirect_to @user, status: :unprocessable_entity
     else
@@ -46,6 +44,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.picture.attach(params[:user][:picture]) if @user.picture.blank?
     if @user.update(user_update_params)
       flash[:success] = "ユーザー情報を更新しました"
       redirect_to @user
@@ -61,6 +60,11 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def user_image
+    filename = params[:filename]
+    send_file Rails.root.join('public', 'user_images', filename), type: 'image/png', disposition: 'inline'
+  end
+
   private
   
   def user_params
@@ -68,7 +72,7 @@ class UsersController < ApplicationController
   end
 
   def user_update_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture)
   end
 
 end

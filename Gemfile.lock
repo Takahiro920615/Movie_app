@@ -46,6 +46,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    active_storage_validations (1.0.3)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activejob (7.0.4.3)
       activesupport (= 7.0.4.3)
       globalid (>= 0.3.6)
@@ -122,6 +127,7 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mini_magick (4.12.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
     msgpack (1.7.0)
@@ -224,6 +230,7 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  active_storage_validations
   bcrypt (~> 3.1.7)
   bootsnap
   bootstrap-sass
@@ -232,6 +239,7 @@ DEPENDENCIES
   faker
   importmap-rails
   jbuilder
+  mini_magick
   puma (~> 5.0)
   rails (~> 7.0.4)
   rails-i18n

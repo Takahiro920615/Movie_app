@@ -4,7 +4,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.7.6"
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass'
+# rails７でエラーメッセージを表示するためのgem
 gem 'importmap-rails'
+# rails7で画像データの更新のためのバリデーション機能を追加するためのgem
+gem "active_storage_validations"
+
+gem 'mini_magick'
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
