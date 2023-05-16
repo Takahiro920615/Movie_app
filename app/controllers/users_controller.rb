@@ -33,10 +33,10 @@ class UsersController < ApplicationController
          @user.picture = "public/user_images/no_image.png"
       end
          flash[:success] = "ユーザー登録しました"
-         redirect_to @user
+         redirect_to @user, status: :unprocessable_entity
     else
       flash.now[:danger]="ユーザー登録に失敗しました"
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -55,6 +55,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
     @user.destroy
     flash[:success]="#{@user.name}を削除しました"
     redirect_to users_url

@@ -6,16 +6,17 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to user
+      flash[:success]="ようこそ#{user.name}さん！"
+      redirect_to user, status: :unprocessable_entity
     else
       flash.now[:danger] = '入館できません'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     log_out
     flash[:success]="ログアウトしました。"
-    redirect_to root_url
+    redirect_to root_url, status: :unprocessable_entity
   end
 end
