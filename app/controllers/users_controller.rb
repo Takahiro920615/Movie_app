@@ -26,12 +26,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     if @user.save
       log_in @user
       @user.picture.attach(params[:user][:picture])
          flash[:success] = "ユーザー登録しました"
-         redirect_to @user, status: :unprocessable_entity
+         redirect_to @user
     else
       flash.now[:danger]="ユーザー登録に失敗しました"
       render :new, status: :unprocessable_entity
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.picture.attach(params[:user][:picture]) if @user.picture.blank?
+    @user.picture.attach(params[:user][:picture]) 
     if @user.update(user_update_params)
       flash[:success] = "ユーザー情報を更新しました"
       redirect_to @user
@@ -68,7 +68,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation,:picture).merge(picture: "no_image.png")
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,:picture)
   end
 
   def user_update_params
