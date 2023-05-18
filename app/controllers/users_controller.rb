@@ -29,7 +29,13 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       log_in @user
+      # ここ変更したところ5/19
+      if params[:user][:picture].present?
       @user.picture.attach(params[:user][:picture])
+      else
+        default_picture = File.open('/public/user_images/no_image.png')
+        @user.picture.attach(io: default_picture, filename: 'no_image.png')
+      end
          flash[:success] = "ユーザー登録しました"
          redirect_to @user
     else
