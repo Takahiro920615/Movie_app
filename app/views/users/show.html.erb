@@ -4,9 +4,16 @@
     <h1 class="user-headding"></h1>
       <div class="users-show-item">
         <div class="user-right">
+        <% if @user.picture.attached? %><br>
           <%= image_tag @user.picture, width: 200, class: "mb-2" %><br>
+        <% else %>
+          <%= image_tag "/user_images/no_image.png", width: 50, class: "mb-2 rounded-circle" %><br>
+        <% end %>
           <%= @user.name %><br>
           <%= @user.email%>
+        </div>
+        <div class="movie_show_index">
+        
         </div>
       </div>
   </div>

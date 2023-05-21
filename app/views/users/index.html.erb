@@ -7,9 +7,9 @@
       <div class="users-index">
         <div class="user-right">
          <% if user.picture.attached? %><br>
-          <%= image_tag user.picture, width: 50, class: "mb-2" %>
+          <%= image_tag user.picture, width: 50, class: "mb-2 rounded-circle" %>
           <% else %>
-          <%= image_tag "/user_images/no_image.png", width: 50, class: "mb-2" %>
+          <%= image_tag "/user_images/no_image.png", width: 50, class: "mb-2 rounded-circle" %>
           <% end %>
           <%= link_to user.name, user_path(user.id)%>
            <%= link_to "削除", user, data: {turbo_method: :delete, confirem:"#{user.name}を削除してよろしいですか？"},class: "btn btn-danger"%>

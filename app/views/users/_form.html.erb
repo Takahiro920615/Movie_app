@@ -22,8 +22,8 @@
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
   
   <% if @user.picture.present? %> <!-- @user.pictureが存在する場合のみ image_tag を使用(if文ないとエラーが出る) -->
-    <span><b>[現在登録されている画像]</b></span>
-    <%= image_tag @user.picture, width: 200, class: "mb-2" %>
+    <span style="display: block; text-align: center; padding-top:10px;color:gray"><b>[現在登録されている画像]</b></span><br>
+    <%= image_tag @user.picture, width: 200, class: "mb-2", style: "display: block; margin-left: auto; margin-right: auto;" %>
   <% end %>
 <% end %>
 

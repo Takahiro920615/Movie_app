@@ -149,6 +149,10 @@ p {
   text-align: center;
 }
 
+.user_edit_picture_title{
+  text-align: center;
+}
+
 /* 入力フォーム */
 
 .label-signup {
@@ -165,4 +169,15 @@ p {
 
 .btn-user--edit {
   margin-top: 10px;
+}
+
+// user.indexページ
+.user-right{
+  padding-top: 10px;
+}
+
+.index_h1{
+  background-color: #777;
+  color: #fff;
+  text-align: center;
 }
