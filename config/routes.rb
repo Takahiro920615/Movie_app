@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get '/user_images/:filename', to: 'users#user_image', as: 'user_image'
 
   resources :users do
+    resources :movies
   end
+
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
