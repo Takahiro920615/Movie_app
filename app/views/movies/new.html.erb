@@ -1,6 +1,8 @@
 <%# <% provide(:movie_text,"映画名")%> %>
 <div class="movie_new">
   <div class="container">
+  <div class = "row">
+  <div class="col-md-6 ">
   <h1>投稿新規作成ページ<h1>
   <h6>お気に入りの映画の記録を残しましょう</h6>
 
@@ -21,10 +23,15 @@
       <%= f.label :impression, class: "movie_label" %>
       <%= f.text_area :impression, placeholder: "感想を教えてください", class: "form-control" %>
 
-    
-
       <%= f.submit "作成",class: "btn btn-success btn-block btn-text" %>
     <% end %>
+    </div>
+    <div class="col-md-6 ">
+      <%= image_tag('movie_images/movie.gif', class:"movie_gif")%>
+    </div>
+    
+
+    </div>
   </div>
 </div>
 

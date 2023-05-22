@@ -7,9 +7,9 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.create(movie_params)
     if @movie.save
-      flash[:success]="#{@movie.titme}の投稿を作成しました。"
+      flash[:success] = "#{@movie.title}の投稿を作成しました。"
       @movie.img = "movie_no_images.png"
-      redirect_to user_movie_url(@movie)
+      redirect_to [@movie.user, @movie]
     else
       render 'new'
     end

@@ -10,11 +10,25 @@
           <%= image_tag "/user_images/no_image.png", width: 50, class: "mb-2 rounded-circle" %><br>
         <% end %>
           <%= @user.name %><br>
-          <%= @user.email%>
+          <%= @user.email%><br>
+          <%= link_to"+",new_user_movie_url(@user),class: "btn btn-success btn-text"%><br>
         </div>
         <div class="movie_show_index">
-          <%= link_to"新規作成",new_user_movie_url(@user)%>
-        </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3 col-mi-offset-3">
+                <%if @user.movies.any?%>
+                 <h3>投稿一覧</h3>
+                  <% @user.movies.each do |movie|%>
+                  <ul><%= movie.title%></ul>
+                  <% end %>
+                <%else%>
+                  <p>映画のレビューを書いてみよう！</p>
+                  <%= image_tag("movie_no_images.png") %>
+                <% end %>
+              </div>
+            </div>
+          </div>
       </div>
   </div>
 </div>
