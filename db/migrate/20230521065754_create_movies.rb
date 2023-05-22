@@ -4,7 +4,7 @@ class CreateMovies < ActiveRecord::Migration[7.0]
       t.string :img
       t.string :title
       t.time :screentime
-      t.string :directer
+      t.string :director
       t.text :detail
       t.text :impression
       t.references :user, null: false, foreign_key: true

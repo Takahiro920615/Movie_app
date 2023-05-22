@@ -1,0 +1,30 @@
+<%# <% provide(:movie_text,"映画名")%> %>
+<div class="movie_new">
+  <div class="container">
+  <h1>投稿新規作成ページ<h1>
+  <h6>お気に入りの映画の記録を残しましょう</h6>
+
+
+    <%= form_with model:@movie, url: user_movies_path do |f| %>
+      <%= f.label :title, class: "movie_label" %>
+      <%= f.text_field :title, class: "form-control" %>
+
+      <%= f.label :screentime, class: "movie_label" %>
+      <%= f.time_field :screentime, class: "form-control" %>
+
+      <%= f.label :director, class: "movie_label" %>
+      <%= f.text_field :director, class: "form-control" %>
+
+      <%= f.label :detail, class: "movie_label" %>
+      <%= f.text_area :detail, placeholder: "映画の概要をまとめてみましょう！",class: "form-control" %>
+      
+      <%= f.label :impression, class: "movie_label" %>
+      <%= f.text_area :impression, placeholder: "感想を教えてください", class: "form-control" %>
+
+    
+
+      <%= f.submit "作成",class: "btn btn-success btn-block btn-text" %>
+    <% end %>
+  </div>
+</div>
+

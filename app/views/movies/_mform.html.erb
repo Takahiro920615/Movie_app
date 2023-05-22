@@ -1,0 +1,4 @@
+<%= form_with model: @movie, url:user_movies_path do |f|%>
+ <%= f.label :title, class: "label-#{yield(:movie_text)}"%>
+ <%= f.text_field :title, class: "form-content"%>
+<% end %>
