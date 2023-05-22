@@ -1,22 +1,23 @@
 class MoviesController < ApplicationController
+  before_action :set_user
 
   def new
     @movie = Movie.new
   end
 
   def create
-    @movie = Movie.create(movie_params)
+    @movie = @user.movies.create(movie_params)
     if @movie.save
       flash[:success] = "#{@movie.title}の投稿を作成しました。"
-      @movie.img = "movie_no_images.png"
-      redirect_to [@movie.user, @movie]
+      redirect_to user_path(current_user)
     else
-      render 'new'
+      flash[:danger]="新規投稿に失敗しました"
     end
   end
   
   def index
     @movies = Movie.all
+    debugger
   end
 
   def show
@@ -25,6 +26,10 @@ class MoviesController < ApplicationController
 
   private
   def movie_params
-    params.require(:movie).permit(:title, :screentime, :director, :detail,:impression, :img)
+    params.require(:movie).permit(:title, :screentime, :director, :detail,:impression)
+  end
+
+  def set_user
+    @user = current_user
   end
 end

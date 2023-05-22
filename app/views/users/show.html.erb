@@ -11,22 +11,48 @@
         <% end %>
           <%= @user.name %><br>
           <%= @user.email%><br>
+          <div class="horizontal-line"></div>
           <%= link_to"+",new_user_movie_url(@user),class: "btn btn-success btn-text"%><br>
         </div>
         <div class="movie_show_index">
           <div class="container">
             <div class="row">
-              <div class="col-md-3 col-mi-offset-3">
-                <%if @user.movies.any?%>
+              <div class="col-md-12 col-mi-offset-12">
+             
+               <%# debugg情報の表示 %>
+                <%if @user.movies.any?%> 
                  <h3>投稿一覧</h3>
-                  <% @user.movies.each do |movie|%>
-                  <ul><%= movie.title%></ul>
+                 <%# <%= debug @user.movies %> %>
+      
+                  <% @user.movies.each do |movie| %>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col">
+                          <p><%= movie.title %></p>
+                        </div>
+                        <div class="col">
+                          <p><%= movie.screentime %></p>
+                        </div>
+                        <div class="col">
+                          <p><%= movie.director %></p>
+                        </div>
+                        <div class="col">
+                          <p><%= movie.detail %></p>
+                        </div>
+                        <div class="col">
+                          <p><%= movie.impression %></p>
+                        </div>
+                      </div>
+                    </div>
                   <% end %>
                 <%else%>
                   <p>映画のレビューを書いてみよう！</p>
-                  <%= image_tag("movie_no_images.png") %>
+                  <div class="movie-container">
+                  <div class="movie_item">
+                  <%= image_tag("movie_no_image.png",class:"user_show_movie_expample",width:"200px",height:"auto")%>
+                  <p>タイトルA</p>
                 <% end %>
-              </div>
+               </div>
             </div>
           </div>
       </div>
