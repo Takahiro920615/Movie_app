@@ -24,6 +24,9 @@
       <%= f.label :impression, class: "movie_label" %>
       <%= f.text_area :impression, placeholder: "感想を教えてください", class: "form-control" %>
 
+      <%= f.label :img, class: "movie-label"%>
+      <%= f.file_field :img, class: "img"%>
+
       <%= f.submit "作成",class: "btn btn-success btn-block btn-text" %>
     <% end %>
     </div>

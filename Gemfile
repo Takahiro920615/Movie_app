@@ -10,6 +10,7 @@ gem 'importmap-rails'
 gem "active_storage_validations"
 
 gem 'mini_magick'
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

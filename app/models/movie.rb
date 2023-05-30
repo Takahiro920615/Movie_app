@@ -3,6 +3,7 @@ class Movie < ApplicationRecord
   # validates :detail, length:{ maximum: 300}
   # validates :impression, length:{ maximum:300}
   # validates :title, length:{ minimum:1 }
+  mount_uploader :img, ImgUploader
 
   # def check_duplicate_title
   #   if Movie.exists?(title: title)

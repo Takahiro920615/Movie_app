@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_user
+  before_action :set_user, only:[:show, :edit]
 
   def new
     @movie = Movie.new
@@ -24,12 +24,19 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
   end
 
+  def edit
+    @user = current_user
+    @movie = @user.movies.find_by(id: params[:id])
+  end
+
   private
   def movie_params
-    params.require(:movie).permit(:title, :screentime, :director, :detail,:impression)
+    params.require(:movie).permit(:title, :screentime, :director, :detail, :impression, :img)
   end
 
   def set_user
     @user = current_user
   end
+
+  
 end

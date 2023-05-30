@@ -1,0 +1,30 @@
+
+<div class="movie_edit">
+<div class="container">
+<div class="row">
+ <div class="col-md-6 col-md-offset-3">
+ <h1>映画情報の編集</h1>
+   <%= form_with(model: @movie,url:user_movie_path, local: true) do |f| %>
+    <%= render 'shared/movie_err_msg' %>
+     <%= f.label :title, class:"label-movie-edit"%>
+     <%= f.text_field :title, class:"form-control"%>
+
+     <%= f.label :screentime, class:"label-movie-edit"%>
+     <%= f.time_field :screentime, class:"form-control"%>
+
+     <%= f.label :director, class:"label-movie-edit"%>
+     <%= f.text_field :director, class:"form-control"%>
+
+     <%= f.label :detail, class:"label-movie-edit"%>
+     <%= f.text_field :detail, class:"form-control"%>
+
+     <%= f.label :impression, class:"label-movie-edit"%>
+     <%= f.text_field :impression, class:"form-control"%>
+
+     <%= f.submit "更新", class:"btn btn-block btn-primary"%>
+
+   <% end %>
+ </div>
+ </div>
+ </div>
+</div>
