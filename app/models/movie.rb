@@ -1,5 +1,5 @@
 class Movie < ApplicationRecord
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
   # validates :detail, length:{ maximum: 300}
   # validates :impression, length:{ maximum:300}
   # validates :title, length:{ minimum:1 }

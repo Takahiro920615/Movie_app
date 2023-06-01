@@ -1,6 +1,8 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
+import Rails from '@rails/ujs';
+import 'bootstrap';
+
+Rails.start();
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -16,4 +18,3 @@ import "controllers"
 //= require rails-ujs
 //= require jquery
 //= require bootstrap
-//= require_tree .

@@ -46,7 +46,7 @@
                     </div>
                     <% end %>
                     <%= link_to "編集", edit_user_movie_path(@user, id: movie.id), class: "btn btn-success" %>
-                    <%= link_to "削除",user_movie_path(@user, movie),method: :delete ,data: {confirm: "削除してよろしいでしょうか？"},
+                    <%= link_to "削除",user_movie_path(@user, movie.id),method: :delete ,data: {confirm: "削除してよろしいでしょうか？"},
                      class: "btn btn-secondary"%>
                   </div>
                 <% end %>

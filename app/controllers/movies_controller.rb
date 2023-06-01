@@ -43,9 +43,15 @@ class MoviesController < ApplicationController
   def destroy
     @user= User.find(params[:user_id])
     @movie = @user.movies.find(params[:id])
+   if
     @movie.destroy
     flash[:success]="#{@movie.title}のデータを削除しました"
     redirect_to current_user
+   else
+    flash[:danger]="投稿の削除に失敗しました。"
+    redirect_to current_user
+   end
+
   end
 
 
