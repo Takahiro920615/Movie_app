@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   before_save{self.email = email.downcase}
   has_one_attached :picture
-  has_many:movies, dependent: :destroy
+  has_many :movies, dependent: :destroy
+
 
   validates :name, presence: true, length: { maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -15,3 +16,5 @@ class User < ApplicationRecord
     message: "有効なフォーマットではありません" },
     size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
 end
+
+

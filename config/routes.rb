@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   get '/user_images/:filename', to: 'users#user_image', as: 'user_image'
 
   resources :users do
-    resources :movies
+    resources :movies do
+      resources :favorites, only: [:create, :destroy] do
+      end
+    end
   end
 
   end
