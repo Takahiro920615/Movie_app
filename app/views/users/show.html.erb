@@ -25,6 +25,7 @@
                   <table class ="table table-condensed table-hover">
                   <thead>
                    <tr>
+                   
                   </tr>
                    </thead>
                    <tbody>
@@ -33,6 +34,13 @@
                    </td>
                    <td>
                    <pre><%= movie.director %></pre>
+                   </td>
+                   <td>
+                   <% if current_user.favorite?(movie)%>
+                     <%= link_to "❤️", user_movie_favorite_path(current_user,movie), method: :delete%>
+                   <% else %>
+                     <%= link_to "♡", user_movie_favorites_path(current_user,movie), method: :post%>
+                   <% end %>
                    </td>
                   </tbody>
                 </table>

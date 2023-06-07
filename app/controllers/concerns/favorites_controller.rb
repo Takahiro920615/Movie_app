@@ -1,15 +1,15 @@
 class FavoritesController < ApplicationController
   before_action :set_movie
   def create
-    current_user.favorite(@movie)
+    current_user.favorite?(@movie)
     redirect_to current_user
-    flash:[:success] = "いいねしました！"
+    flash[:success] = "いいねしました！"
   end
 
   def destroy
-    current_user.unfavorite(@movie)
+    current_user.favorite?(@movie)
     redirect_to current_user
-    flash:[:primary] = "いいねを取り消しました"
+    flash[:primary] = "いいねを取り消しました"
     
   end
 

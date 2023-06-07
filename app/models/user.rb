@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_save{self.email = email.downcase}
   has_one_attached :picture
   has_many :movies, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
 
   validates :name, presence: true, length: { maximum: 50}
@@ -15,6 +16,10 @@ class User < ApplicationRecord
   validates :picture, content_type: { in: %w[image/jpeg image/gif image/png],
     message: "有効なフォーマットではありません" },
     size: { less_than: 5.megabytes, message: " 5MBを超える画像はアップロードできません" }
+
+    def favorite?(movie)
+      movies.exists?(movie.id)
+    end
 end
 
 

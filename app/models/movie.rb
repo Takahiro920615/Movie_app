@@ -1,6 +1,6 @@
 class Movie < ApplicationRecord
   belongs_to :user
-  has_many :users
+  has_many :favorites, dependent: :destroy
   # validates :detail, length:{ maximum: 300}
   # validates :impression, length:{ maximum:300}
   # validates :title, length:{ minimum:1 }
