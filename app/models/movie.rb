@@ -1,6 +1,6 @@
 class Movie < ApplicationRecord
   belongs_to :user
-  has_many :favorites, dependent: :destroy
+  
   # validates :detail, length:{ maximum: 300}
   # validates :impression, length:{ maximum:300}
   # validates :title, length:{ minimum:1 }
@@ -10,5 +10,8 @@ class Movie < ApplicationRecord
   #   if Movie.exists?(title: title)
   #    errors.add(:title,"の投稿はすでにありますよ！")
   #   end
+  # end
+  # def favorite?(user)
+  #   favorites.where(user_id: user.id)
   # end
 end

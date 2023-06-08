@@ -1,5 +1,21 @@
 class UsersController < ApplicationController
 
+  def like
+    @user= User.find(params[:user_id])
+    @movie= Movie.find(params[:id])
+    @movie.likes = true
+    @movie.save
+    redirect_to current_user
+  end
+
+  def unlike
+    @user= User.find(params[:user_id])
+    @movie= Movie.find(params[:id])
+    @movie.likes = false
+    @movie.save
+    redirect_to current_user
+  end
+
 
   def login_page
   end
@@ -20,6 +36,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @movie = @user.movies.all
   end
 
   def new

@@ -1,20 +1,19 @@
 class FavoritesController < ApplicationController
-  before_action :set_movie
+
+  # ここは使っていない
+ 
   def create
-    current_user.favorite?(@movie)
+    @movie_favorite = Favorite.new(user_id: current_user.id, movie_id: current_user.movie.id)
+    @movie_favorite.save
     redirect_to current_user
-    flash[:success] = "いいねしました！"
   end
 
   def destroy
-    current_user.favorite?(@movie)
+    @movie_favorite = Favorite.find_by(user_id: current_user.id, movie_id: current_user.movie.id)
+    @movie_favorite.destroy
     redirect_to current_user
-    flash[:primary] = "いいねを取り消しました"
-    
   end
 
   private
-    def set_movie
-      @movie = Movie.find(params[:movie_id])
-    end
+    
 end
