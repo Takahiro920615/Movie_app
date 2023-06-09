@@ -1,0 +1,34 @@
+<div class="main movie-show">
+  <div class="container">
+    <h1><%="#{@movie.title}についての投稿"%></h1>
+    <div>
+     <% if @movie.img? %>
+       <div class="d-flex justify-content-center">
+         <p><%= image_tag @movie.img.url, style: "max-height: 200px; width: auto" %></p>
+       </div>
+    <% end %>
+    </div>
+    <div>
+      <table class="table table-bordered table-condensed">
+  <tr>
+    <td colspan="1"><%="監督"%></td>
+    <td colspan="11"><%= "#{@movie.director}" %></td>
+    
+  </tr>
+  <tr>
+     <td><%= "上映時間" %></td>
+    <td colspan="11"><%= "#{@movie.screentime}" %></td>
+  </tr>
+  <tr>
+   <td><%= "映画詳細" %></td>
+    <td colspan="11"><%= "監督" %></td>
+  </tr>
+  <tr>
+    <td><%= "感想" %></td>
+    <td colspan="11"><%= "#{@movie.impression}" %></td>
+  </tr>
+</table>
+        
+      </div>
+  </div>
+</div>

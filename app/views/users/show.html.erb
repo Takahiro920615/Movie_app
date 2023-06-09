@@ -22,44 +22,48 @@
                <h1>Collection</h1>
                 <% @user.movies.each do |movie| %>
                   <div class="col-md-4 show_index">
-                  <table class ="table table-condensed table-hover">
-                  <thead>
-                   <tr>
-                    <th>Title</th>	      
-                    <th>Director</th>	       
-                    <th></th>
-                  </tr>
-                   </thead>
-                   <tbody>
-                   <tr>
-                   <td>
-                   <pre><%= movie.title %></pre>
-                   </td>
-                   <td>
-                   <pre><%= movie.director %></pre>
-                   </td>
-                   <td>
-                     <% if movie.likes? %>
-                      <%= link_to"❤️",unlike_user_movie_user_movie_path(current_user, movie.id), method: :post%>
-                     <% else %> 
-                      <%= link_to "♡", like_user_movie_user_movie_path(current_user, movie), method: :post %>
-                     <% end %>
-                   </td>
-                   </tr>
-                  </tbody>
-                </table>
-                    <% if movie.img? %>
-                    <div class="d-flex justify-content-center">
-                      <p><%= image_tag movie.img.url, style: "max-height: 200px; width: auto" %></p>
+                    <div class="table">
+                      <table class ="table">
+                        <thead>
+                        <tr>
+                          <th>Title</th><br>	 
+                          <th>Director</th>	       
+                          <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr >
+                        <td >
+                        <pre><%= movie.title %></pre>
+                        </td>
+                        <td>
+                        <pre><%= movie.director %></pre>
+                        </td>
+                        <td>
+                          <% if movie.likes? %>
+                            <%= link_to"❤️",unlike_user_movie_user_movie_path(current_user, movie.id), method: :post%>
+                          <% else %> 
+                            <%= link_to "♡", like_user_movie_user_movie_path(current_user, movie), method: :post %>
+                          <% end %>
+                        </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                        <% if movie.img? %>
+                        <div class="d-flex justify-content-center">
+                          <p><%= image_tag movie.img.url, style: "max-height: 200px; width: auto" %></p>
+                        </div>
+                        <% else %>
+                        <div class="d-flex justify-content-center">
+                          <p><%= image_tag "movie_no_image.png", style: "max-height: 200px; width: auto" %></p>
+                        </div>
+                        <% end %>
+                        <%= link_to "編集", edit_user_movie_path(@user, id: movie.id), class: "btn btn-success" %>
+                        <%= link_to "👀",user_movie_path(current_user,movie), class:"btn btn-primary"%>
+                        <%= link_to "削除",user_movie_path(@user, movie.id),method: :delete ,data: {confirm: "削除してよろしいでしょうか？"},
+                        class: "btn btn-secondary"%>
+                       
                     </div>
-                    <% else %>
-                     <div class="d-flex justify-content-center">
-                      <p><%= image_tag "movie_no_image.png", style: "max-height: 200px; width: auto" %></p>
-                    </div>
-                    <% end %>
-                    <%= link_to "編集", edit_user_movie_path(@user, id: movie.id), class: "btn btn-success" %>
-                    <%= link_to "削除",user_movie_path(@user, movie.id),method: :delete ,data: {confirm: "削除してよろしいでしょうか？"},
-                     class: "btn btn-secondary"%>
                   </div>
                 <% end %>
 

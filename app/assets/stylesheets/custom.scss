@@ -204,11 +204,6 @@ p {
   text-align: center;
 }
 
-.show_index{
-  margin-top: 10px;
-}
-
-
 .horizontal-line {
   border-top: 2px solid #000000;
   margin-top: 20px; /* 必要に応じて余白を調整してください */
@@ -261,3 +256,19 @@ p {
   width:90%;
 }
 
+.movie_show{
+  padding: 400px 0 100px 100px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  color: black;
+  background-color:#dcdcdc ;
+  background-repeat: no-repeat;
+  background-position: center 50%;
+  background-size: cover;
+  background-image: url("/seater.png")
+}

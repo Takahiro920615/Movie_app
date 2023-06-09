@@ -20,6 +20,10 @@
      <%= f.label :impression, class:"label-movie-edit"%>
      <%= f.text_field :impression, class:"form-control"%>
 
+     <%= f.label :img, class: "movie-label"%>
+      <%= f.file_field :img, class: "img"%>
+
+
      <%= f.submit "更新", class:"btn btn-block btn-primary"%>
 
    <% end %>
