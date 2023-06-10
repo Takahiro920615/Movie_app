@@ -1,3 +1,5 @@
+ 
+ 
  <%= form_with model: @user, url:users_path, multipart: true do |f| %>
   <%= render 'shared/error_messages', object: @user %>
 
@@ -26,6 +28,7 @@
     <%= image_tag @user.picture, width: 200, class: "mb-2", style: "display: block; margin-left: auto; margin-right: auto;" %>
   <% end %>
 <% end %>
+
 
 <script>
   function pictureImage(obj){

@@ -1,4 +1,4 @@
-
+<%= stylesheet_link_tag 'movies' %>
 <div class="main user-show">
   <div class="container">
     <h1 class="user-headding"></h1>
@@ -22,12 +22,12 @@
                <h1>Collection</h1>
                 <% @user.movies.each do |movie| %>
                   <div class="col-md-4 show_index">
-                    <div class="table">
+                  
                       <table class ="table">
                         <thead>
                         <tr>
-                          <th>Title</th><br>	 
-                          <th>Director</th>	       
+                          <th></th><br>	 
+                          <th></th>	       
                           <th></th>
                         </tr>
                         </thead>
@@ -62,8 +62,7 @@
                         <%= link_to "👀",user_movie_path(current_user,movie), class:"btn btn-primary"%>
                         <%= link_to "削除",user_movie_path(@user, movie.id),method: :delete ,data: {confirm: "削除してよろしいでしょうか？"},
                         class: "btn btn-secondary"%>
-                       
-                    </div>
+                    
                   </div>
                 <% end %>
 
