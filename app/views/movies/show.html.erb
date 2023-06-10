@@ -1,7 +1,9 @@
-<div class="main movie-show">
+<%= stylesheet_link_tag 'movies' %>
+
+<div class="main show_user-movie">
   <div class="container">
     <h1><%="#{@movie.title}についての投稿"%></h1>
-    <div>
+    <div><br>
      <% if @movie.img? %>
        <div class="d-flex justify-content-center">
          <p><%= image_tag @movie.img.url, style: "max-height: 200px; width: auto" %></p>
@@ -9,26 +11,24 @@
     <% end %>
     </div>
     <div>
-      <table class="table table-bordered table-condensed">
-  <tr>
-    <td colspan="1"><%="監督"%></td>
-    <td colspan="11"><%= "#{@movie.director}" %></td>
-    
-  </tr>
-  <tr>
-     <td><%= "上映時間" %></td>
-    <td colspan="11"><%= "#{@movie.screentime}" %></td>
-  </tr>
-  <tr>
-   <td><%= "映画詳細" %></td>
-    <td colspan="11"><%= "監督" %></td>
-  </tr>
-  <tr>
-    <td><%= "感想" %></td>
+    <li><%="監督"%></li>
+    <%= "#{@movie.director}" %>
+    </div><br>
+  
+   <div>
+     <li><%= "上映時間" %></li>
+     <td colspan="11"><%= "#{@movie.screentime}" %></td>
+   </div><br>
+  
+   <div>
+   <li><%= "映画詳細" %></li>
+    <td colspan="11"><%= "#{@movie.detail}" %></td>
+   </div><br>
+  
+   <div>
+    <li><%= "感想" %></li>
     <td colspan="11"><%= "#{@movie.impression}" %></td>
-  </tr>
-</table>
-        
-      </div>
+   </div><br>
+
   </div>
 </div>

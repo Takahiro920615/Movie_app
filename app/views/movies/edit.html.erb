@@ -1,5 +1,11 @@
-<div class="movie_edit" style="background-image: url('/movie_images/movie_new.png');">
-<div class="container">
+<div class="movie_edit" style="background-image: url('/movie_images/movie_new.png'); 
+background-size: cover; 
+background-position: center; 
+background-repeat: no-repeat; 
+height: 100vh;
+margin: 0; 
+padding: 0;
+">
 <div class="row">
  <div class="col-md-6 col-md-offset-3">
  <h1>映画情報の編集</h1>
@@ -27,7 +33,6 @@
      <%= f.submit "更新", class:"btn btn-block btn-primary"%>
 
    <% end %>
- </div>
  </div>
  </div>
 </div>
