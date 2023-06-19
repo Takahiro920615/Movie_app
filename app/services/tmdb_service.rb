@@ -8,5 +8,8 @@ class TmdbService
     url = "#{BASE_URL}/movie/now_playing?region=JP&api_key=#{API_KEY}"
     response = RestClient.get(url)
     JSON.parse(response.body)['results']
+    
   end
+
+  
 end

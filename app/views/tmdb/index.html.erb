@@ -1,16 +1,18 @@
-<div class="container">
-  <h1>Movies in Japan</h1>
+<%= stylesheet_link_tag 'movies' %>
+<div class="tmdb_field">
+  <h1>Movies in Japan</h1><br>
 
   <div class="row">
     <% @tmdb.each_with_index do |movie, index| %>
       <div class="col-md-4">
         <div class="movie">
-          <div class="title"><%= movie['title'] %></div>
+         <h3><div class="title" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= movie['title'] %></div></h3>
           <% if movie['poster_path'] %>
            <div class="poster">
             <img src="https://image.tmdb.org/t/p/w300/<%= movie['poster_path'] %>" alt="Movie Poster">
            </div>
-          <% end %>
+          <% end %><br>
+          <div class="overview"><%= movie['overview'] %></div><br>
         </div>
       </div>
 
