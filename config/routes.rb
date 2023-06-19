@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   get    '/login', to: 'sessions#new'
   post   '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  get  '/map', to: 'map#show'
+
+  get '/tmdb', to: 'tmdb#index'
   
   get '/user_images/:filename', to: 'users#user_image', as: 'user_image'
 

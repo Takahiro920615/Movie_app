@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Movies in Japan</h1>
+
+  <div class="row">
+    <% @tmdb.each_with_index do |movie, index| %>
+      <div class="col-md-4">
+        <div class="movie">
+          <div class="title"><%= movie['title'] %></div>
+          <% if movie['poster_path'] %>
+           <div class="poster">
+            <img src="https://image.tmdb.org/t/p/w300/<%= movie['poster_path'] %>" alt="Movie Poster">
+           </div>
+          <% end %>
+        </div>
+      </div>
+
+      <% if (index + 1) % 3 == 0 %>
+        <div class="w-100"></div> <!-- 改行用の要素 -->
+      <% end %>
+    <% end %>
+  </div>
+</div>
