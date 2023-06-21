@@ -15,11 +15,13 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :movies do
-      member do
-        post 'like', to: 'users#like', as: 'like_user_movie'
-        post 'unlike', to: 'users#unlike', as: 'unlike_user_movie'
-      end
+      resources :comments, only: [:create, :destroy]
     end
+      # member do
+      #   post 'like', to: 'users#like', as: 'like_user_movie'
+      #   post 'unlike', to: 'users#unlike', as: 'unlike_user_movie'
+      # end
+    # end
   end
 
   end

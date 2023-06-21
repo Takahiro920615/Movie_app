@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
   
   # validates :detail, length:{ maximum: 300}
   # validates :impression, length:{ maximum:300}

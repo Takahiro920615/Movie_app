@@ -39,13 +39,7 @@
                         <td>
                         <pre><%= movie.director %></pre>
                         </td>
-                        <td>
-                          <% if movie.likes? %>
-                            <%= link_to"❤️",unlike_user_movie_user_movie_path(current_user, movie.id), method: :post%>
-                          <% else %> 
-                            <%= link_to "♡", like_user_movie_user_movie_path(current_user, movie), method: :post %>
-                          <% end %>
-                        </td>
+                       
                         </tr>
                         </tbody>
                       </table>
