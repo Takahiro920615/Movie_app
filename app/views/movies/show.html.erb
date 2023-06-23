@@ -29,21 +29,22 @@
     <li><%= "感想" %></li>
     <td colspan="11"><%= "#{@movie.impression}" %></td>
    </div><br>
-  </div>
+  
   <div>
     <h2>コメントを投稿する</h2>
-     <%= form_with(model: [Comment.new, @movie], url: user_movie_comment_path(current_user,@movie.id)) do |f|%>
-      <%= f.text_area :coment, place_holder: "コメントを入力してください"%>
-      <%= f.submit "投稿する"%>
+     <%= form_with(model: [current_user, @movie, Comment.new], url: user_movie_comments_path(current_user, @movie), method: :post) do |f|%>
+      <%= f.text_area :content, placeholder: "コメントを入力してください",class: "form-control"%>
+      <%= f.submit "投稿する", class:"btn btn-block btn-primary"%>
      <% end %>
   </div>
 
-  <div>
-   <h2>コメント一覧</h2>
-    <% @movie.comments.each do |comment|%>
+    <div>
+      <h2>コメント一覧</h2>
+    <% @movie.comments.each do |comment| %>
       <div>
-        <strong><%= comment.user.name%></strong>: <%= comment.content%>
+        <strong><%= comment.user.name %></strong>: <%= comment.content %>
       </div>
     <% end %>
+    </div>
   </div>
 </div>
