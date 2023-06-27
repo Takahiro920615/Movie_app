@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :current_user, only:[:edit]
+  before_action :logged_in_user, only:[:edit, :update, :destroy]
 
   def like
     @user= User.find(params[:user_id])
@@ -64,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
     
   end
 
@@ -75,7 +76,7 @@ class UsersController < ApplicationController
       flash[:success] = "ユーザー情報を更新しました"
       redirect_to @user
     else
-      render :edit
+      render :show
     end
   end
 
@@ -84,6 +85,12 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:success]="#{@user.name}を削除しました"
     redirect_to users_url
+  end
+
+  def logged_in_user
+    unlesslogged_in?
+      flash[:danger]="ログインしてください"
+      redirect_to login_url
   end
 
   def user_image
@@ -100,6 +107,8 @@ class UsersController < ApplicationController
   def user_update_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture)
   end
+
+
 
   
 
