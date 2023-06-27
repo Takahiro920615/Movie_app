@@ -52,11 +52,14 @@
                           <p><%= image_tag "movie_no_image.png", style: "max-height: 200px; width: auto" %></p>
                         </div>
                         <% end %>
+                        <% if current_user && current_user==@user%>
                         <%= link_to "編集", edit_user_movie_path(@user, id: movie.id), class: "btn btn-success" %>
                         <%= link_to "👀",user_movie_path(@user,movie.id), class:"btn btn-primary"%>
                         <%= link_to "削除",user_movie_path(@user, movie.id),method: :delete ,data: {confirm: "削除してよろしいでしょうか？"},
                         class: "btn btn-secondary"%>
-                    
+                        <% else %>
+                        <%= link_to "👀",user_movie_path(@user,movie.id), class:"btn btn-primary"%>
+                        <% end %>
                   </div>
                 <% end %>
 

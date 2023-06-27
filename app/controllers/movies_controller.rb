@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
-  before_action :set_user, only:[:show,:create, :edit,:update]
+  before_action :set_user, only:[:show,:create,:edit,:update]
   before_action :current_user, only: [:edit]
+  before_action :require_login, only: [:edit]
 
   def new
     @movie = Movie.new
@@ -67,6 +68,13 @@ class MoviesController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:danger] = "ログインが必要です"
+      redirect_to login_path
+    end
   end
 
   
