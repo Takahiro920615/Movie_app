@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :current_user, only:[:edit]
 
   def like
     @user= User.find(params[:user_id])
@@ -64,6 +65,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    
   end
 
   def update

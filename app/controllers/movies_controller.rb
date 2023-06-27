@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_user, only:[:show,:create, :edit,:update]
+  before_action :current_user, only: [:edit]
 
   def new
     @movie = Movie.new

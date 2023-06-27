@@ -37,13 +37,18 @@
       <%= f.submit "投稿する", class:"btn btn-block btn-primary"%>
      <% end %>
   </div>
-
-    <div>
-      <h2>コメント一覧</h2>
-    <% @movie.comments.each do |comment| %>
+  
+    <% if @movie.comments.exists?%>
       <div>
-        <strong><%= comment.user.name %></strong>: <%= comment.content %>
-      </div>
+        <h2>コメント一覧</h2>
+      <% @movie.comments.each do |comment| %>
+        <div>
+          <strong><%= comment.user.name %></strong>: <%= comment.content %>
+        </div>
+      <% end %>
+    <% else %>
+      <div>
+      <div>
     <% end %>
     </div>
   </div>

@@ -53,7 +53,7 @@
                         </div>
                         <% end %>
                         <%= link_to "編集", edit_user_movie_path(@user, id: movie.id), class: "btn btn-success" %>
-                        <%= link_to "👀",user_movie_path(current_user,movie), class:"btn btn-primary"%>
+                        <%= link_to "👀",user_movie_path(@user,movie.id), class:"btn btn-primary"%>
                         <%= link_to "削除",user_movie_path(@user, movie.id),method: :delete ,data: {confirm: "削除してよろしいでしょうか？"},
                         class: "btn btn-secondary"%>
                     

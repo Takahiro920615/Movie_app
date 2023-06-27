@@ -17,6 +17,6 @@ class SessionsController < ApplicationController
   def destroy
     log_out
     flash[:success]="ログアウトしました。"
-    redirect_to root_url, status: :unprocessable_entity
+    redirect_to root_path
   end
 end
