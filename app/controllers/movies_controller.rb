@@ -2,6 +2,11 @@ class MoviesController < ApplicationController
   before_action :set_user, only:[:show,:create,:edit,:update]
   before_action :current_user, only: [:edit]
   before_action :require_login, only: [:edit]
+  before_action :logged_in_user, only: [:edit,:update,:destroy]
+  
+
+ 
+  
 
   def new
     @movie = Movie.new
@@ -53,8 +58,10 @@ class MoviesController < ApplicationController
     flash[:danger]="投稿の削除に失敗しました。"
     redirect_to current_user
    end
-
   end
+
+
+
 
 
   private
@@ -77,5 +84,11 @@ class MoviesController < ApplicationController
     end
   end
 
+  def set_movie
+    @movie= Movie.find(params[:id])
+  end
+  end
+
   
-end
+
+  

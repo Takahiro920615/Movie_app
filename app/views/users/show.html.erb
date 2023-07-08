@@ -20,9 +20,18 @@
               <div class="col-md-12 col-mi-offset-12">
                <% if @user.movies.any? %>
                <h1>Collection</h1>
+               <ul>
+               <li>コメント通知</li>
+                <% @user.notifications.unread.each do |notification|%>
+                  <li><%= notification.comment.content%>
+                      <%= button_to "Mark ad read",mark_as_read_notification_path(notification), method: :patch%>
+                  </li>
+                <% end %>
+               </ul>
+              
+               
                 <% @user.movies.each do |movie| %>
                   <div class="col-md-4 show_index">
-                  
                       <table class ="table">
                         <thead>
                         <tr>
@@ -39,7 +48,6 @@
                         <td>
                         <pre><%= movie.director %></pre>
                         </td>
-                       
                         </tr>
                         </tbody>
                       </table>
@@ -59,6 +67,7 @@
                         class: "btn btn-secondary"%>
                         <% else %>
                         <%= link_to "👀",user_movie_path(@user,movie.id), class:"btn btn-primary"%>
+                        <%= link_to "コンタクト","#", class:"btn btn-primary"%>
                         <% end %>
                   </div>
                 <% end %>

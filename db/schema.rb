@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_23_211253) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_30_211316) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -82,6 +82,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_211253) do
     t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.boolean "read"
+    t.integer "user_id", null: false
+    t.integer "comment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -104,4 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_23_211253) do
   add_foreign_key "favorites", "movies"
   add_foreign_key "favorites", "users"
   add_foreign_key "movies", "users"
+  add_foreign_key "notifications", "coments", column: "comment_id"
+  add_foreign_key "notifications", "users"
 end

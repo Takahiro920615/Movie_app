@@ -2,7 +2,8 @@
 
 <div class="main show_user-movie">
   <div class="container">
-    <h1><%="#{@movie.title}についての投稿"%></h1>
+    <h1><%="#{@movie.title}についての投稿"%>
+    </h1>
     <div><br>
      <% if @movie.img? %>
        <div class="d-flex justify-content-center">
@@ -44,6 +45,9 @@
       <% @movie.comments.each do |comment| %>
         <div>
           <strong><%= comment.user.name %></strong>: <%= comment.content %>
+        </div>
+        <div><%=link_to "✏️","#",class:"btn"%>
+             <%=link_to "削除",user_movie_comment_path(current_user,@movie,comment), method: :delete, class:"btn btn-danger"%>
         </div>
       <% end %>
     <% else %>

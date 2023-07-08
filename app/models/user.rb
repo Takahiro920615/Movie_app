@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one_attached :picture
   has_many :movies, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
 
   validates :name, presence: true, length: { maximum: 50}

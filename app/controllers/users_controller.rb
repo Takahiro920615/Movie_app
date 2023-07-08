@@ -1,21 +1,15 @@
 class UsersController < ApplicationController
   before_action :current_user, only:[:edit]
-  before_action :logged_in_user, only:[:edit, :update, :destroy]
+  before_action :logged_in_user, only:[:edit,:update,:destroy]
 
   def like
-    @user= User.find(params[:user_id])
-    @movie= Movie.find(params[:id])
-    @movie.likes = true
-    @movie.save
-    redirect_to current_user
+    @movie.update(likes: true)
+    redirect_to user_movie_path(current_user, @movie)
   end
 
   def unlike
-    @user= User.find(params[:user_id])
-    @movie= Movie.find(params[:id])
-    @movie.likes = false
-    @movie.save
-    redirect_to current_user
+    @movie.update(likes: false)
+    redirect_to user_movie_path(current_user, @movie)
   end
 
 
@@ -87,11 +81,7 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def logged_in_user
-    unlesslogged_in?
-      flash[:danger]="ログインしてください"
-      redirect_to login_url
-  end
+ 
 
   def user_image
     filename = params[:filename]
@@ -107,9 +97,4 @@ class UsersController < ApplicationController
   def user_update_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture)
   end
-
-
-
-  
-
 end

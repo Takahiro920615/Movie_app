@@ -15,16 +15,17 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :movies do
-      resources :comments, only: [:create, :destroy]
+      resources :comments, only: [:create,:edit,:update, :destroy]
     end
-      # member do
-      #   post 'like', to: 'users#like', as: 'like_user_movie'
-      #   post 'unlike', to: 'users#unlike', as: 'unlike_user_movie'
-      # end
-    # end
   end
 
+  resources :notifications do
+    member do
+      patch :mark_as_read
+    end
   end
+
+end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
