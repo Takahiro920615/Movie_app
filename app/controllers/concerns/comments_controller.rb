@@ -15,6 +15,10 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment= Comment.find(params[:id])
+  end
+
+  def update
   end
 
   def destroy
@@ -34,10 +38,11 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 
+  
   def create_notification(comment)
     movie = comment.movie
     if movie.present?
-    Notification.create(user_id: comment.user_id, comment_id: comment.id, read: false)
+    Notification.create(user_id:@user.user_id, comment_id: comment.id, read: false)
     end
   end
 end

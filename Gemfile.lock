@@ -279,6 +279,7 @@ DEPENDENCIES
   jbuilder
   mini_magick
   net-http
+  pry
   pry-byebug
   puma (~> 5.0)
   rails (~> 7.0.4)

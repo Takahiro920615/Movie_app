@@ -1,0 +1,9 @@
+<div>
+  <%= form_with model: @comment, url:user_movie_comment_path,method: :patch, multipart: true do |f| %>
+  <%# #commentのshared/error_messagesを作成する      %> 
+     <%= f.label :comment, class: "label-comment" %>
+     <%= f.text_field :comment, class: "form-control", value: @comment.content %>
+
+     <%= f.submit "更新", class: "btn btn-primary btn-block" %> 
+  <% end %>
+<div>

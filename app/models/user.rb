@@ -4,7 +4,10 @@ class User < ApplicationRecord
   has_many :movies, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
-
+  
+  def unread_notifications
+    notifications.where(read: false)
+  end
 
   validates :name, presence: true, length: { maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

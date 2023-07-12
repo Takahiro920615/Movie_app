@@ -46,7 +46,7 @@
         <div>
           <strong><%= comment.user.name %></strong>: <%= comment.content %>
         </div>
-        <div><%=link_to "✏️","#",class:"btn"%>
+        <div><%=link_to "✏️",edit_user_movie_comment_path(current_user,@movie,comment),class:"btn"%>
              <%=link_to "削除",user_movie_comment_path(current_user,@movie,comment), method: :delete, class:"btn btn-danger"%>
         </div>
       <% end %>

@@ -22,9 +22,9 @@
                <h1>Collection</h1>
                <ul>
                <li>コメント通知</li>
-                <% @user.notifications.unread.each do |notification|%>
-                  <li><%= notification.comment.content%>
-                      <%= button_to "Mark ad read",mark_as_read_notification_path(notification), method: :patch%>
+                <% @user.unread_notifications.each do |notification| %>
+                  <li><%= notification.comment.content %>
+                    <%= button_to "Mark as read", mark_as_read_notification_path(notification), method: :patch %>
                   </li>
                 <% end %>
                </ul>

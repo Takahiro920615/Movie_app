@@ -1,6 +1,6 @@
 class Notification < ApplicationRecord
   belongs_to :user
-  belongs_to :comment, foreign_key: "comment_id"
+  belongs_to :comment
 
   scope :unread, -> { where(read: false)}
 end
