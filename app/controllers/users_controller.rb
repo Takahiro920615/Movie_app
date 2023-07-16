@@ -32,6 +32,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @notification = Notification.where(read: false)
     @movie = @user.movies.all
   end
 

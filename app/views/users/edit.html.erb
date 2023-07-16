@@ -8,7 +8,46 @@
 <h1>ユーザー情報の編集</h1>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-   <%= render "form"%>
+   <%= form_with model: @user, url: user_path, multipart: true do |f| %>
+    <%= render 'shared/error_messages', object: @user %>
+
+      <%= f.label :picture, '画像(5Gまで)',class: "label-#{yield(:class_text)}"  %>
+      <%= f.file_field :picture,  onchange: "pictureImage(this);", accept: "image/jpeg,image/gif,image/png"%>
+      <div id="picture" >
+        <img id="picture_preview" class="mb-3" width="100">
+      </div>
+
+      <%= f.label :name, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label :email, class: "label-#{yield(:class_text)}" %>
+      <%= f.email_field :email, class: "form-control" %>
+
+      <%= f.label :password, class: "label-#{yield(:class_text)}" %>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <%= f.label :password_confirmation, "Confirmation", class: "label-#{yield(:class_text)}" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+
+      <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
+      
+      <% if @user.picture.present? %> <!-- @user.pictureが存在する場合のみ image_tag を使用(if文ないとエラーが出る) -->
+        <span style="display: block; text-align: center; padding-top:10px;color:gray"><b>[現在登録されている画像]</b></span><br>
+        <%= image_tag @user.picture, width: 200, class: "mb-2", style: "display: block; margin-left: auto; margin-right: auto;" %>
+      <% end %>
+    <% end %>
+
+
+<script>
+  function pictureImage(obj){
+      var fileReader = new FileReader();
+      fileReader.onload = (function() {
+        document.getElementById('picture_preview').src = fileReader.result;
+      });
+      fileReader.readAsDataURL(obj.files[0]);
+  }
+</script>
+
   </div>
 </div>
 </div>

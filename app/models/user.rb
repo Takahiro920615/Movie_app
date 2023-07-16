@@ -4,6 +4,11 @@ class User < ApplicationRecord
   has_many :movies, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+
+  def notifications
+    # 通知モデルとの関連付けにより、通知を取得するメソッドを定義します
+    Notification.where(user_id: self.id)
+  end
   
   def unread_notifications
     notifications.where(read: false)

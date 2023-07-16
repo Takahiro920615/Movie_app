@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
+  before_action :current_user, only:[:edit]
 
   def create
+    @user = User.find(params[:user_id])
     @movie = Movie.find(params[:movie_id])
     @comment = @movie.comments.build(comment_params)
     @comment.user = current_user
@@ -40,9 +42,11 @@ class CommentsController < ApplicationController
 
   
   def create_notification(comment)
+    user_id = comment.user_id # コメントのユーザーIDを取得
+    user = User.find(user_id)
     movie = comment.movie
     if movie.present?
-    Notification.create(user_id:@user.user_id, comment_id: comment.id, read: false)
+    Notification.create(user_id:user_id, comment_id: comment.id, read: false)
     end
   end
 end
