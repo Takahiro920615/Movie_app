@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :current_user, only:[:edit]
+  before_action :current_user, only:[:edit,:update]
 
   def create
     @user = User.find(params[:user_id])
@@ -21,7 +21,15 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @comment = Comment.all
+      if @comment.update(comment_params)  # ここでcomment_paramsを渡すように変更
+        flash[:success] = "コメントを更新しました"
+        redirect_to user_movie_url
+      else
+        render :edit
+      end
   end
+ 
 
   def destroy
     @comment = Comment.find(params[:id])
@@ -40,7 +48,6 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 
-  
   def create_notification(comment)
     user_id = comment.user_id # コメントのユーザーIDを取得
     user = User.find(user_id)

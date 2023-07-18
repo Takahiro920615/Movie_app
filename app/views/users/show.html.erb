@@ -20,10 +20,14 @@
               <div class="col-md-12 col-mi-offset-12">
                <% if @user.movies.any? %>
                <h1>Collection</h1>
+               <% if @notification.exists?%>
                <li>コメント通知</li><br>
                 <% @notification.unread.each do |notification|%>
+                  <%= notification.user.name%>
+                  <%= notification.comment.movie.title%> 
                   <%= notification.comment.content%>
                   <%= button_to "☑️",mark_as_read_notification_path(notification), method: :patch%>
+                <% end %>
                 <% end %>
 
                 <% @user.movies.each do |movie| %>
