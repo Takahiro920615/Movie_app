@@ -20,14 +20,18 @@ class CommentsController < ApplicationController
     @comment= Comment.find(params[:id])
   end
 
+  
   def update
-    @comment = Comment.all
-      if @comment.update(comment_params)  # ここでcomment_paramsを渡すように変更
-        flash[:success] = "コメントを更新しました"
-        redirect_to user_movie_url
-      else
-        render :edit
-      end
+    @user = User.find(params[:user_id])
+    @movie = Movie.find(params[:movie_id])
+    @comment = Comment.find(params[:id])
+  
+    if @comment.update(comment_params)
+      flash[:success] = "コメントを更新しました"
+      redirect_to user_movie_comment_path(@user, @movie, @comment)
+    else
+      render :edit
+    end
   end
  
 

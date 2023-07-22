@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :movies do
-      resources :comments, only: [:create,:edit,:update, :destroy]
+      resources :comments, only: [:create,:edit,:update,:destroy]
     end
   end
 
