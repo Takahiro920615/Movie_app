@@ -18,7 +18,7 @@
   
    <div>
      <li><%= "上映時間" %></li>
-     <td colspan="11"><%= "#{@movie.screentime}" %></td>
+     <td colspan="11"><%= (@movie.screentime.strftime('%H:%M')) %></td>
    </div><br>
   
    <div>
@@ -44,7 +44,8 @@
         <h2>コメント一覧</h2>
        <% @movie.comments.each do |comment| %>
           <div>
-            <strong><%= comment.user.name %></strong>: <%= comment.content %>
+            <strong><%= comment.user.name %>
+            </strong>: <%= comment.content%>
           </div>
           <div><%=link_to "✏️",edit_user_movie_comment_path(current_user,@movie,comment),class:"btn"%>
               <%=link_to "削除",user_movie_comment_path(current_user,@movie,comment), method: :delete, class:"btn btn-danger"%>

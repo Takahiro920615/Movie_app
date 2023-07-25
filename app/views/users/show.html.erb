@@ -23,12 +23,12 @@
                <% if @notification.exists?%>
                <li>コメント通知</li><br>
                 <% @notification.unread.each do |notification|%>
-                  <%= notification.user.name%>
-                  <%= notification.comment.movie.title%> 
+                  <%= notification.user.name%>さんより<br>
+                  【<%= notification.comment.movie.title%>】の投稿へコメントがありました！<br> 
                   <%= notification.comment.content%>
                   <%= button_to "☑️",mark_as_read_notification_path(notification), method: :patch%>
                 <% end %>
-                <% end %>
+               <% end %>
 
                 <% @user.movies.each do |movie| %>
                   <div class="col-md-4 show_index">
