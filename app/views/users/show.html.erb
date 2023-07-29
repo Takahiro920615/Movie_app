@@ -12,7 +12,9 @@
           <%= @user.name %><br>
           <%= @user.email%><br>
           <div class="horizontal-line"></div>
+         <% if current_user && current_user==@user%>
           <%= link_to"+",new_user_movie_url(@user),class: "btn btn-success btn-text"%><br>
+         <% end %>
         </div>
         <div class="movie_show_index">
           <div class="container text-center">
@@ -67,7 +69,6 @@
                         class: "btn btn-secondary"%>
                         <% else %>
                         <%= link_to "👀",user_movie_path(@user,movie.id), class:"btn btn-primary"%>
-                        <%= link_to "コンタクト","#", class:"btn btn-primary"%>
                         <% end %>
                   </div>
                 <% end %>
