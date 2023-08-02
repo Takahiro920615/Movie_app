@@ -29,6 +29,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    @current_user= current_user
   end
 
   def edit

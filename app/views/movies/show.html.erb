@@ -47,9 +47,11 @@
             <strong><%= comment.user.name %>
             </strong>: <%= comment.content%>
           </div>
+          <% if comment.user == @current_user%>
           <div><%=link_to "✏️",edit_user_movie_comment_path(current_user,@movie,comment),class:"btn"%>
               <%=link_to "削除",user_movie_comment_path(current_user,@movie,comment), method: :delete, class:"btn btn-danger"%>
           </div>
+          <% end %>
        <% end %>
     <% else %>
       <div>
